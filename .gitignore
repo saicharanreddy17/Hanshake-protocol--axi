@@ -1,0 +1,25 @@
+`timescale 1ns / 1ps
+module hanshake_axi(A_clk,valid,ready,data_transfer);
+input A_clk;
+input valid;
+input ready;
+output reg data_transfer;
+
+always@(A_clk)
+begin 
+if(A_clk==1)
+begin
+   if(valid==1)
+   begin
+      if(ready==1)
+      begin
+      data_transfer = 1;
+      end
+      else 
+      data_transfer = 0;
+      
+   end
+   else data_transfer = 0; 
+end    
+end 
+endmodule
